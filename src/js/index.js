@@ -73,6 +73,17 @@ class RegularTableElement extends RegularViewEventModel {
         return key;
     }
 
+    resetAutoSize() {
+        this._column_sizes.auto = {};
+        this._column_sizes.override = {};
+        this._column_sizes.indices = [];
+
+        for (const th of this.table_model.header.cells[this.table_model.header.cells.length - 1]) {
+            th.style.minWidth = "";
+            th.style.maxWidth = "";
+        }
+    }
+
     /**
      * Returns the `MetaData` object associated with a `<td>` or `<th>`.  When
      * your `StyleListener` is invoked, use this method to look up additional
